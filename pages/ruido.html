@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Sistema de Formulas | Grupo WF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="../styles/pages/ruido.css">
+  </head>
+  <body>
+    <header>
+      <a href="../index.html">
+        <img src="../assets/logo.svg" alt="logo">
+      </a>
+      <p class="tx-h1">Sistema de Formulas</p>
+    </header>
+    <main>
+      <p class="tx-h2">Cálculo Ruído</p>
+      <div class="divisor"></div>
+      <form action="">
+        <div class="container-inputs">
+          <div class="content-input">
+            <label for="amostragem">Tempo de Amostragem:</label>
+            <input type="text" id="amostragem" placeholder="Minutos de amostragem">
+          </div>
+          <div class="content-input">
+            <label for="exposition">Tempo de Exposição:</label>
+            <input type="text" id="exposition" placeholder="Minutos de exposição">
+          </div> 
+          <div class="content-input">
+            <label for="dose">Dose:</label>
+            <input type="text" id="dose" placeholder="Dose">
+          </div>
+          <div class="container-buttons">
+            <button class="btn-primary" id="button">
+              <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.18182 7.84615H10.8182C10.987 7.84615 11.1488 7.77727 11.2682 7.65465C11.3875 7.53203 11.4545 7.36572 11.4545 7.19231V3.26923C11.4545 3.09582 11.3875 2.92951 11.2682 2.80689C11.1488 2.68427 10.987 2.61538 10.8182 2.61538H3.18182C3.01304 2.61538 2.85118 2.68427 2.73184 2.80689C2.6125 2.92951 2.54545 3.09582 2.54545 3.26923V7.19231C2.54545 7.36572 2.6125 7.53203 2.73184 7.65465C2.85118 7.77727 3.01304 7.84615 3.18182 7.84615ZM3.81818 3.92308H10.1818V6.53846H3.81818V3.92308ZM12.7273 0H1.27273C0.935179 0 0.611456 0.137774 0.372773 0.383014C0.13409 0.628254 0 0.960871 0 1.30769V15.6923C0 16.0391 0.13409 16.3717 0.372773 16.617C0.611456 16.8622 0.935179 17 1.27273 17H12.7273C13.0648 17 13.3885 16.8622 13.6272 16.617C13.8659 16.3717 14 16.0391 14 15.6923V1.30769C14 0.960871 13.8659 0.628254 13.6272 0.383014C13.3885 0.137774 13.0648 0 12.7273 0ZM12.7273 15.6923H1.27273V1.30769H12.7273V15.6923ZM4.77273 10.1346C4.77273 10.3286 4.71674 10.5182 4.61186 10.6795C4.50697 10.8408 4.35789 10.9665 4.18347 11.0407C4.00905 11.115 3.81712 11.1344 3.63196 11.0965C3.4468 11.0587 3.27671 10.9653 3.14322 10.8281C3.00972 10.691 2.91881 10.5162 2.88198 10.326C2.84515 10.1357 2.86405 9.9385 2.9363 9.75929C3.00854 9.58008 3.13089 9.4269 3.28786 9.31914C3.44484 9.21137 3.62939 9.15385 3.81818 9.15385C4.07134 9.15385 4.31414 9.25718 4.49315 9.44111C4.67216 9.62504 4.77273 9.8745 4.77273 10.1346ZM7.95455 10.1346C7.95455 10.3286 7.89856 10.5182 7.79367 10.6795C7.68879 10.8408 7.53971 10.9665 7.36529 11.0407C7.19087 11.115 6.99894 11.1344 6.81378 11.0965C6.62861 11.0587 6.45853 10.9653 6.32503 10.8281C6.19154 10.691 6.10063 10.5162 6.0638 10.326C6.02696 10.1357 6.04587 9.9385 6.11811 9.75929C6.19036 9.58008 6.31271 9.4269 6.46968 9.31914C6.62666 9.21137 6.81121 9.15385 7 9.15385C7.25316 9.15385 7.49595 9.25718 7.67497 9.44111C7.85398 9.62504 7.95455 9.8745 7.95455 10.1346ZM11.1364 10.1346C11.1364 10.3286 11.0804 10.5182 10.9755 10.6795C10.8706 10.8408 10.7215 10.9665 10.5471 11.0407C10.3727 11.115 10.1808 11.1344 9.9956 11.0965C9.81043 11.0587 9.64035 10.9653 9.50685 10.8281C9.37336 10.691 9.28245 10.5162 9.24561 10.326C9.20878 10.1357 9.22769 9.9385 9.29993 9.75929C9.37218 9.58008 9.49453 9.4269 9.6515 9.31914C9.80847 9.21137 9.99303 9.15385 10.1818 9.15385C10.435 9.15385 10.6778 9.25718 10.8568 9.44111C11.0358 9.62504 11.1364 9.8745 11.1364 10.1346ZM4.77273 13.4038C4.77273 13.5978 4.71674 13.7874 4.61186 13.9487C4.50697 14.11 4.35789 14.2357 4.18347 14.31C4.00905 14.3842 3.81712 14.4036 3.63196 14.3658C3.4468 14.3279 3.27671 14.2345 3.14322 14.0974C3.00972 13.9602 2.91881 13.7854 2.88198 13.5952C2.84515 13.4049 2.86405 13.2077 2.9363 13.0285C3.00854 12.8493 3.13089 12.6961 3.28786 12.5884C3.44484 12.4806 3.62939 12.4231 3.81818 12.4231C4.07134 12.4231 4.31414 12.5264 4.49315 12.7103C4.67216 12.8943 4.77273 13.1437 4.77273 13.4038ZM7.95455 13.4038C7.95455 13.5978 7.89856 13.7874 7.79367 13.9487C7.68879 14.11 7.53971 14.2357 7.36529 14.31C7.19087 14.3842 6.99894 14.4036 6.81378 14.3658C6.62861 14.3279 6.45853 14.2345 6.32503 14.0974C6.19154 13.9602 6.10063 13.7854 6.0638 13.5952C6.02696 13.4049 6.04587 13.2077 6.11811 13.0285C6.19036 12.8493 6.31271 12.6961 6.46968 12.5884C6.62666 12.4806 6.81121 12.4231 7 12.4231C7.25316 12.4231 7.49595 12.5264 7.67497 12.7103C7.85398 12.8943 7.95455 13.1437 7.95455 13.4038ZM11.1364 13.4038C11.1364 13.5978 11.0804 13.7874 10.9755 13.9487C10.8706 14.11 10.7215 14.2357 10.5471 14.31C10.3727 14.3842 10.1808 14.4036 9.9956 14.3658C9.81043 14.3279 9.64035 14.2345 9.50685 14.0974C9.37336 13.9602 9.28245 13.7854 9.24561 13.5952C9.20878 13.4049 9.22769 13.2077 9.29993 13.0285C9.37218 12.8493 9.49453 12.6961 9.6515 12.5884C9.80847 12.4806 9.99303 12.4231 10.1818 12.4231C10.435 12.4231 10.6778 12.5264 10.8568 12.7103C11.0358 12.8943 11.1364 13.1437 11.1364 13.4038Z" />
+              </svg>
+              <p class="tx-md">Calcular</p>
+            </button>
+          </div>
+        </div>
+      </form>
+    </main>
+    <div class="view-result" id="hidden">
+      <div class="container-result">
+        <div class="container-title">
+          <div class="title">
+            <img src="../assets/pencil.svg" alt="">
+            <p class="tx-xl">Resultado</p>
+          </div>
+          <img src="../assets/close.svg" id="close-popup" alt="">
+        </div>
+        <div class="divisor"></div>
+        <div class="container-item">
+          <div class="item">
+            <p class="name-result tx-md">NEN de 12 horas:</p>
+            <span class="result tx-md" id="nen12"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">NEN de 8 horas:</p>
+            <span class="result tx-md" id="nen8"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">NEN de 6 horas:</p>
+            <span class="result tx-md" id="nen6"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">NEN de Exposição</p>
+            <span class="result tx-md" id="nen"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">LAVG(Q5):</p>
+            <span class="result tx-md" id="lavg"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">TWA(Q5):</p>
+            <span class="result tx-md" id="twa"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">DOSE:</p>
+            <span class="result tx-md" id="result-dose"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">Estimada DOSE:</p>
+            <span class="result tx-md" id="est-dose"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">Tempo de Amostragem:</p>
+            <span class="result tx-md" id="amostragem-time"></span>
+          </div>
+          <div class="item">
+            <p class="name-result tx-md">Tempo de Exposição:</p>
+            <span class="result tx-md" id="exposition-time"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="../scripts/ruído.js"></script>
+</html>

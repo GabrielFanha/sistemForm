@@ -1,0 +1,71 @@
+:root {
+  --color-primary: #045F51;
+  --color-secondary: #D1EAE2;
+  --color-tx: #333333;
+  --color-secundary-tx: #666666;
+  --color-bg: #F9F9F9;
+  --color-error: #DC3545;
+  --font-family: "Roboto", sans-serif;
+  color: var(--color-tx);
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-bg);
+}
+
+.tx-h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: var(--font-family);
+  margin: 0;
+}
+.tx-h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--font-family);
+  margin: 0;
+}
+.tx-xl{
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: var(--font-family);
+  margin: 0;
+}
+.tx-md {
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: var(--font-family);
+  margin: 0;
+}
+.tx-sm {
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: var(--font-family);
+  margin: 0;
+}
+.tx-error {
+  font-size: 0.875rem;
+  font-weight: bold;
+  font-family: var(--font-family);
+  color: var(--color-error);
+  margin: 0;
+}
+
+
+/* Parte para caso precise fazer alteração do tamanho pro mobile */
+@media (width < 80em) {
+  .tx-h1 {
+    font-size: 1.5rem;
+  }
+  
+}

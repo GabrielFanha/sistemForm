@@ -1,0 +1,54 @@
+body {
+  height: 100vh;
+}
+main {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem;
+
+  & .menu {
+    max-width: 32.5rem;
+    max-height: 26.25rem;
+    width: 100%;
+    padding: 1rem .75rem;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-radius: .5rem;
+
+    & p {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    & .divisor {
+      height: 1px;
+      background-color: var(--color-bg);
+      margin-block: .75rem;
+    }
+
+    & ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      gap: .75rem; 
+      padding-left: 1.25rem;
+      margin: 0;
+      & a {
+        text-decoration: none;
+        color: var(--color-bg);
+        cursor: pointer;
+      }
+    }
+
+    & .hidden {
+      display: none;
+    }
+
+      
+  }
+}
+
+@media (width < 80em) {
+
+}
