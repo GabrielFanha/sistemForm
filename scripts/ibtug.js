@@ -27,13 +27,11 @@ const ibutgCalc = (tbn, tbs, tg, exposition) => {
   let ibutg = 0
   if (exposition === true) {
     ibutg = (0.7 * tbn) + (0.1 * tbs) + (0.2 * tg)
-    presetResults(tbs, tbn, tg, ibutg)
-    return ibutg
+        return presetResults(tbs, tbn, tg, ibutg)
   } else if (!exposition) {
     console.log(tbs, tbn, tg, ibutg)
     ibutg = (0.7 * tbn) + (0.3 * tg)
-    presetResults(tbs, tbn, tg, ibutg)
-    return ibutg
+    return presetResults(tbs, tbn, tg, ibutg)
   } else {
     console.log(`Valor invalido`)
   }
