@@ -73,7 +73,7 @@ const presetResultsForm = (typeCalc, type, porcentagem, lt, poeira, silica) => {
         resultPoeira.textContent = ``
         resultSilica.textContent = ``
         resultPorcentagem.textContent = `${porcentagem} %`
-        resultLimite.textContent = `${lt} mg/m³`
+        resultLimite.textContent = `${formatValue(lt)} mg/m³`
         viewResult.id = ""
     }
     
