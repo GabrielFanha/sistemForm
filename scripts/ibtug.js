@@ -8,8 +8,6 @@ const tbnResult = document.getElementById("tbnResult")
 const tgResult = document.getElementById("tgResult")
 const ibutgResult = document.getElementById("IBUTG")
 
-console.log(submitButton)
-
 submitButton.addEventListener("click", () => {
   let noExpositionSolar = document.getElementById("no-exposition").checked
   let tbsValue = document.getElementById("tbs").value.replace(",", ".")
@@ -24,7 +22,7 @@ submitButton.addEventListener("click", () => {
 })
 
 
-export const ibutgCalc = (tbn, tbs, tg, exposition) => {
+const ibutgCalc = (tbn, tbs, tg, exposition) => {
   let ibutg = 0
   if (exposition === true) {
     ibutg = (0.7 * tbn) + (0.1 * tbs) + (0.2 * tg)

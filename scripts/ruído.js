@@ -75,7 +75,6 @@ closeSwitch.addEventListener("click", (e) => {
   if(viewResult){
     viewResult.id = "hidden"
   }
-  
 })
 
 
