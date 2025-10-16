@@ -116,7 +116,6 @@ const calcularDoseEst = (dose, ta) => {
     for (doseEst; resultEstDose !== lavg; doseEst = doseEst - 0.01) {
       resultEstDose = calcularResultadoEstDose(doseEst)
       resultEstDose = resultEstDose.toFixed(2)
-      console.log(lavg, resultEstDose, doseEst)
     }
     doseEst = doseEst.toFixed(2)
     doseEst = String(doseEst)

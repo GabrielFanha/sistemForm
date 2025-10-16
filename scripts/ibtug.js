@@ -1,6 +1,6 @@
 import formatValue from "./formatValue.js"
 
-const submitButton = document.getElementById("btn-primary")
+const submitButton = document.getElementById("btn")
 const closeSwitch = document.getElementById("close-popup")
 const viewResult = document.getElementById("hidden")
 const tbsResult = document.getElementById("tbsResult")
@@ -8,7 +8,8 @@ const tbnResult = document.getElementById("tbnResult")
 const tgResult = document.getElementById("tgResult")
 const ibutgResult = document.getElementById("IBUTG")
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault()
   let noExpositionSolar = document.getElementById("no-exposition").checked
   let tbsValue = document.getElementById("tbs").value.replace(",", ".")
   let tbnValue = document.getElementById("tbn").value.replace(",", ".")
