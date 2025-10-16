@@ -1,3 +1,4 @@
+import formatValue from "./formatValue.js"
 
 const corpoTabela = document.getElementById('bodyTable');
 const addLineBtn = document.getElementById('btn-secondary');
@@ -34,24 +35,32 @@ const createNewLine = () => {
 const calcIBUGMedium = (type) => {
   const linhas = corpoTabela.querySelectorAll('tr')
   const dadosCalculo = []
-
+  let ibutgMedium = 0
   linhas.forEach((linha, index) => {
     const inputs = linha.querySelectorAll('input')
+    const time = parseFloat(inputs[0].value)
+    const tbs = parseFloat(inputs[1].value)
+    const tbn = parseFloat(inputs[2].value)
+    const tg = parseFloat(inputs[3].value)
+    const metabolismo = parseFloat(inputs[4].value)
+    const vestimenta = parseFloat(inputs[5].value)
+    const ibutg = ibutgCalc(tbn, tbs, tg, type)
+    const productLine = ibutg * time
+    ibutgMedium += productLine
     const dadosLinha = {
-      tempo: parseFloat(inputs[0].value) || 0,
-      tbs: parseFloat(inputs[1].value) || 0,
-      tbn: parseFloat(inputs[2].value) || 0,
-      tg: parseFloat(inputs[3].value) || 0,
-      metabolismo: parseFloat(inputs[4].value) || 0,
-      vestimenta: parseFloat(inputs[5].value) || 0
+      tempo: time,
+      tbs: tbs,
+      tbn: tbs,
+      tg: tg,
+      ibutg: ibutg,
+      metabolismo: metabolismo,
+      vestimenta: vestimenta,
     }
-
-    const ibutg = ibutgCalc(dadosLinha.tbn, dadosLinha.tbs, dadosLinha.tg, type)
-    console.log(`o resultado do IBUTG é ${ibutg}`)
-
     dadosCalculo.push(dadosLinha)
   })
+  ibutgMedium = ibutgMedium / 60
   console.log(dadosCalculo)
+  console.log(ibutgMedium)
 
   
 
@@ -64,11 +73,11 @@ const ibutgCalc = (tbn, tbs, tg, exposition) => {
   let ibutg = 0
   if (exposition === true) {
     ibutg = (0.7 * tbn) + (0.1 * tbs) + (0.2 * tg)
-        return presetResults(tbs, tbn, tg, ibutg)
+        return ibutg
   } else if (!exposition) {
     console.log(tbs, tbn, tg, ibutg)
     ibutg = (0.7 * tbn) + (0.3 * tg)
-    return presetResults(tbs, tbn, tg, ibutg)
+    return ibutg
   } else {
     console.log(`Valor invalido`)
   }
