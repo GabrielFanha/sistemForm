@@ -27,10 +27,11 @@ main {
     & .input-radio-color {
       display: flex;
       flex-direction: column;
-      gap: .75rem;
 
-      & p {
+      & .tx-md {
         color: var(--color-tx);
+        margin-bottom: 1rem;
+        font-weight: 400;
       }
 
       & div {
@@ -38,6 +39,11 @@ main {
         flex-direction: row;
         align-items: center;
         gap: .75rem;
+
+        & .tx-md {
+            margin: 0;
+        }
+
       }
 
       & input {
