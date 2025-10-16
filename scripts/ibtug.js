@@ -1,6 +1,6 @@
 import formatValue from "./formatValue.js"
 
-const submitButton = document.getElementById("button")
+const submitButton = document.getElementById("btn-primary")
 const closeSwitch = document.getElementById("close-popup")
 const viewResult = document.getElementById("hidden")
 const tbsResult = document.getElementById("tbsResult")
@@ -8,9 +8,9 @@ const tbnResult = document.getElementById("tbnResult")
 const tgResult = document.getElementById("tgResult")
 const ibutgResult = document.getElementById("IBUTG")
 
+console.log(submitButton)
 
-submitButton.addEventListener(`click`, (e) => {
-  e.preventDefault()
+submitButton.addEventListener("click", () => {
   let noExpositionSolar = document.getElementById("no-exposition").checked
   let tbsValue = document.getElementById("tbs").value.replace(",", ".")
   let tbnValue = document.getElementById("tbn").value.replace(",", ".")
@@ -23,7 +23,8 @@ submitButton.addEventListener(`click`, (e) => {
   ibutgCalc(tbn, tbs, tg, exposition)
 })
 
-const ibutgCalc = (tbn, tbs, tg, exposition) => {
+
+export const ibutgCalc = (tbn, tbs, tg, exposition) => {
   let ibutg = 0
   if (exposition === true) {
     ibutg = (0.7 * tbn) + (0.1 * tbs) + (0.2 * tg)
@@ -47,7 +48,8 @@ const presetResults = (tbs, tbn, tg, ibutg) => {
 }
 
 closeSwitch.addEventListener("click", (e) => {
-  e.preventDefault
-  viewResult.id = "hidden"
+   e.preventDefault
+  if(viewResult){
+    viewResult.id = "hidden"
+  }
 })
-

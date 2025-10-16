@@ -1,3 +1,5 @@
+import { ibutgCalc } from "./ibtug.js";
+
 const corpoTabela = document.getElementById('bodyTable');
 const addLineBtn = document.getElementById('btn-secondary');
 const calcBtn = document.getElementById('btn-primary');
@@ -12,23 +14,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 calcBtn.addEventListener("click", (e) => {
   e.preventDefault()
-
-  coletarDados()
+  let noExpositionSolar = document.getElementById("no-exposition").checked
+  let exposition = noExpositionSolar ? false : true
+  // Colocar função de cálculo
+  calcIBUGMedium(exposition)
 })
 
 const createNewLine = () => {
   const novaLinha = corpoTabela.insertRow();
   novaLinha.innerHTML = `
-      <td><input type="text" step="0.01" value="" class="input-tempo" required></td>
-      <td><input type="text" step="0.01" value="" class="input-tbs" required></td>
-      <td><input type="text" step="0.01" value="" class="input-tbn" required></td>
-      <td><input type="text" step="0.01" value="" class="input-tg" required></td>
-      <td><input type="text" step="0.01" value="" class="input-metabolismo" required></td>
-      <td><input type="text" value="" class="input-vestimenta" required></td>
+    <td><input type="text" step="0.01" value="" class="input-tempo" required></td>
+    <td><input type="text" step="0.01" value="" class="input-tbs" required></td>
+    <td><input type="text" step="0.01" value="" class="input-tbn" required></td>
+    <td><input type="text" step="0.01" value="" class="input-tg" required></td>
+    <td><input type="text" step="0.01" value="" class="input-metabolismo" required></td>
+    <td><input type="text" value="" class="input-vestimenta" required></td>
   `;
 }
 
-const coletarDados = () => {
+const calcIBUGMedium = (type) => {
   const linhas = corpoTabela.querySelectorAll('tr')
   const dadosCalculo = []
 
@@ -42,8 +46,16 @@ const coletarDados = () => {
       metabolismo: parseFloat(inputs[4].value) || 0,
       vestimenta: parseFloat(inputs[5].value) || 0
     }
+
+    const ibutg = ibutgCalc(dadosLinha.tbn, dadosLinha.tbs, dadosLinha.tg, type)
+    console.log(`o resultado do IBUTG é ${ibutg}`)
+
     dadosCalculo.push(dadosLinha)
   })
   console.log(dadosCalculo)
+
+  
+
+
   return dadosCalculo
 }

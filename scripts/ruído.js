@@ -2,7 +2,7 @@ import formatValue from "./formatValue.js"
 
 const button = document.getElementById("button")
 const viewResult = document.getElementById("hidden")
-const closeSwitch = document.getElementById("close-popup")
+const closeSwitch = document.getElementById("close-switch")
 const resultNEN6 = document.getElementById("nen6")
 const resultNEN8 = document.getElementById("nen8")
 const resultNEN12 = document.getElementById("nen12")
