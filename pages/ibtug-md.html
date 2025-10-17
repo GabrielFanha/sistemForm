@@ -40,7 +40,7 @@
                 <th class="tx-md">TBN (°C)</th>
                 <th class="tx-md">TG (°C)</th>
                 <th class="tx-md">Taxa de Metabolismo</th>
-                <th class="tx-md">Vestimenta</th>
+                <th class="tx-md">Tipo de Vestimenta</th>
               </tr>
             </thead>
             <tbody id="bodyTable">
@@ -62,6 +62,36 @@
         </div>    
       </form>
     </main>
+
+    <div class="view-result" id="hidden">
+      <div class="container-result">
+        <div class="container-title">
+          <div class="title">
+            <img src="../assets/pencil.svg" alt="">
+            <p class="tx-xl">Resultado</p>
+          </div>
+          <img src="../assets/close.svg" id="close-popup" alt="hidden">
+        </div>
+        <div class="divisor"></div>
+        <div class="container-item">
+
+          <div class="item">
+            <p class="name-result tx-md" id="titleIbutgMedium">IBUTG Médio:</p>
+            <span class="result tx-md" id="resultIbutgMedium"></span>
+          </div>
+
+          <div class="item">
+            <p class="name-result tx-md" id="titleMediumMetabolismo">Taxa de Metabolismo Média:</p>
+            <span class="result tx-md" id="resultMediumMetabolismo"></span>
+          </div>
+
+          <div class="item">
+            <p class="name-result tx-md" id="titleLimite">Limite de Tolerância:</p>
+            <span class="result tx-md" id="resultLimite"></span>
+          </div>          
+        </div>
+      </div>
+    </div>
   </body>
   <script type="module" src="../scripts/mdIbutg.js"></script>
 </html>
