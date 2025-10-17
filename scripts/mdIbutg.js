@@ -34,8 +34,8 @@ const createNewLine = () => {
 
 const calcIBUGMedium = (type) => {
   const linhas = corpoTabela.querySelectorAll('tr')
-  const dadosCalculo = []
   let ibutgMedium = 0
+  let metabolismoMedium = 0
   linhas.forEach((linha, index) => {
     const inputs = linha.querySelectorAll('input')
     const time = parseFloat(inputs[0].value)
@@ -45,27 +45,14 @@ const calcIBUGMedium = (type) => {
     const metabolismo = parseFloat(inputs[4].value)
     const vestimenta = parseFloat(inputs[5].value)
     const ibutg = ibutgCalc(tbn, tbs, tg, type)
-    const productLine = ibutg * time
-    ibutgMedium += productLine
-    const dadosLinha = {
-      tempo: time,
-      tbs: tbs,
-      tbn: tbs,
-      tg: tg,
-      ibutg: ibutg,
-      metabolismo: metabolismo,
-      vestimenta: vestimenta,
-    }
-    dadosCalculo.push(dadosLinha)
+    const productLineIbutg = ibutg * time
+    const productLineMetabolismo = metabolismo * time
+    ibutgMedium += productLineIbutg
+    metabolismoMedium +=productLineMetabolismo
   })
   ibutgMedium = ibutgMedium / 60
-  console.log(dadosCalculo)
-  console.log(ibutgMedium)
-
-  
-
-
-  return dadosCalculo
+  metabolismoMedium = metabolismoMedium / 60
+  return 
 }
 
 
