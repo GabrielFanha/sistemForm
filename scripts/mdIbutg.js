@@ -3,12 +3,26 @@ import formatValue from "./formatValue.js"
 const corpoTabela = document.getElementById('bodyTable');
 const addLineBtn = document.getElementById('btn-secondary');
 const calcBtn = document.getElementById('btn-primary');
+const viewResult = document.getElementById("hidden")
+const closeSwitch = document.getElementById("close-popup")
+const resultIbutgMedium = document.getElementById("resultIbutgMedium")
+const resultMediumMetabolismo = document.getElementById("resultMediumMetabolismo")
+const resultLimite = document.getElementById("resultLimite")
 
+const valuesMetabolismo = [
+  {taxa: 100, lt: 30.2},
+  {taxa: 102, lt: 33.6},
+  {taxa: 104, lt: 33.5},
+  {taxa: 106, lt: 33.4},
+  {taxa: 108, lt: 33.3},
+  {taxa: 110, lt: 33.2},
+  {taxa: 112, lt: 33.1},
+  {taxa: 115, lt: 33.0},
+  {taxa: 117, lt: 32.9},
+]
 
 document.addEventListener("DOMContentLoaded", () => {
-
   createNewLine()
-
   addLineBtn.addEventListener("click", createNewLine)
 })
 
@@ -16,7 +30,6 @@ calcBtn.addEventListener("click", (e) => {
   e.preventDefault()
   let noExpositionSolar = document.getElementById("no-exposition").checked
   let exposition = noExpositionSolar ? false : true
-  // Colocar função de cálculo
   calcIBUGMedium(exposition)
 })
 
@@ -52,6 +65,9 @@ const calcIBUGMedium = (type) => {
   })
   ibutgMedium = ibutgMedium / 60
   metabolismoMedium = metabolismoMedium / 60
+
+
+
   return 
 }
 
@@ -70,3 +86,17 @@ const ibutgCalc = (tbn, tbs, tg, exposition) => {
   }
   
 }
+
+const presetResult = (ibutgMedium, taxaMedium, limite) => {
+  resultIbutgMedium.textContent = `${formatValue(ibutgMedium)} °C`
+  resultMediumMetabolismo.textContent = `${formatValue(taxaMedium)}`
+  resultLimite.textContent = `${formatValue(limite)} °C`
+  viewResult.id = ""
+}
+
+closeSwitch.addEventListener("click", (e) => {
+   e.preventDefault
+  if(viewResult){
+    viewResult.id = "hidden"
+  }
+})
