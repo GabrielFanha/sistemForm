@@ -198,6 +198,8 @@ const presetResult = (ibutgMedium, taxaMedium, limite) => {
   resultMediumMetabolismo.textContent = `${formatValue(taxaMedium)}`
   resultLimite.textContent = `${formatValue(limite)} °C`
   viewResult.id = ""
+  corpoTabela.innerHTML = ""
+  createNewLine()
 }
 
 closeSwitch.addEventListener("click", (e) => {

@@ -65,6 +65,8 @@ const presetResultsForm = (typeCalc, type, porcentagem, lt, poeira, silica) => {
         resultPorcentagem.textContent = `${porcentagem} %`
         resultLimite.textContent = `${lt} mg/m³`
         viewResult.id = ""
+        document.getElementById("poeira").value = ""
+        document.getElementById("silica").value = ""
     } else if (!typeCalc) {
         typePoeira.textContent = ``
         titleSilica.textContent = ``    
@@ -75,6 +77,7 @@ const presetResultsForm = (typeCalc, type, porcentagem, lt, poeira, silica) => {
         resultPorcentagem.textContent = `${porcentagem} %`
         resultLimite.textContent = `${formatValue(lt)} mg/m³`
         viewResult.id = ""
+        document.getElementById("porcentagemSilica").value = ""
     }
     
 }

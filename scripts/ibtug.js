@@ -20,6 +20,11 @@ submitButton.addEventListener("click", (e) => {
   let exposition = noExpositionSolar ? false : true
 
   ibutgCalc(tbn, tbs, tg, exposition)
+
+  document.getElementById("tbs").value = ""
+  document.getElementById("tbn").value = ""
+  document.getElementById("tg").value = ""
+
 })
 
 
