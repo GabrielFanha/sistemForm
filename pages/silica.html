@@ -35,11 +35,11 @@
           <p class="tx-md">Calcular % de Sílica:</p>
           <div class="content-input">
             <label for="poeira">Poeira:</label>
-            <input type="text" id="poeira" placeholder="Resultado da poeira">
+            <input type="text" id="poeira" class="format-number" placeholder="Resultado da poeira">
           </div>
           <div class="content-input">
             <label for="silica">Sílica:</label>
-            <input type="text" id="silica" placeholder="Resultado da sílica">
+            <input type="text" id="silica" class="format-number" placeholder="Resultado da sílica">
           </div>
           <div class="container-buttons">
             <button class="btn-primary" id="buttonPorcentagem">
@@ -52,7 +52,7 @@
           <p class="tx-md">Calcular Limite de Tolerância:</p>
           <div class="content-input">
             <label for="porcentagemSilica">% de Sílica:</label>
-            <input type="text" id="porcentagemSilica" placeholder="Resultado da % de sílica">
+            <input type="text" id="porcentagemSilica" class="format-number" placeholder="Resultado da % de sílica">
           </div>
           <div class="container-buttons">
             <button class="btn-primary" id="buttonLimite">
@@ -105,4 +105,5 @@
 
   </body>
   <script type="module" src="../scripts/silica.js"></script>
+  <script type="module" src="../scripts/formatInputNumber.js"></script>
 </html>

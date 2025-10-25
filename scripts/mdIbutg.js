@@ -132,10 +132,10 @@ const createNewLine = () => {
   novaLinha.dataset.rowIndex = Date.now();
   novaLinha.innerHTML = `
     <td><input type="text" step="0.01" value="" class="input-tempo" required></td>
-    <td><input type="text" step="0.01" value="" class="input-tbs" required></td>
-    <td><input type="text" step="0.01" value="" class="input-tbn" required></td>
-    <td><input type="text" step="0.01" value="" class="input-tg" required></td>
-    <td><input type="text" step="0.01" value="" class="input-metabolismo" required></td>
+    <td><input type="text" step="0.01" value="" class="input-tbs format-number" required></td>
+    <td><input type="text" step="0.01" value="" class="input-tbn format-number" required></td>
+    <td><input type="text" step="0.01" value="" class="input-tg format-number" required></td>
+    <td><input type="text" step="0.01" value="" class="input-metabolismo format-number" required></td>
     <td><input type="text" value="" class="input-vestimenta" required></td>
   `;
 
