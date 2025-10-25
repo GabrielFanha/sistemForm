@@ -166,3 +166,36 @@ main {
     }
   }
 }
+
+/* ... Seu CSS existente para a tabela ... */
+
+/* Estilos para o Menu de Contexto */
+.context-menu {
+    position: absolute; /* Permite posicionamento exato */
+    z-index: 1000;      /* Garante que fique acima de outros elementos */
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#deletarLinhaBtn {
+    background: none;
+    border: none;
+    color: #cc0000; /* Cor vermelha para indicar exclusão */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+
+#deletarLinhaBtn:hover {
+    background-color: #fdd;
+}
+
+/* Opcional: Adicionar um ID exclusivo para cada linha ajuda a saber qual excluir */
+tr {
+    cursor: context-menu; /* Indica ao usuário que a linha é interativa */
+}

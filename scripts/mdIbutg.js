@@ -8,6 +8,8 @@ const closeSwitch = document.getElementById("close-popup")
 const resultIbutgMedium = document.getElementById("resultIbutgMedium")
 const resultMediumMetabolismo = document.getElementById("resultMediumMetabolismo")
 const resultLimite = document.getElementById("resultLimite")
+const contextMenu = document.getElementById('contextMenu');
+const deletarLinhaBtn = document.getElementById('deletarLinhaBtn');
 
 const valuesMetabolismo = [
   {taxa: 100, lt: 30.2},
@@ -19,6 +21,88 @@ const valuesMetabolismo = [
   {taxa: 112, lt: 33.1},
   {taxa: 115, lt: 33.0},
   {taxa: 117, lt: 32.9},
+  {taxa: 119, lt: 32.8},
+  {taxa: 122, lt: 32.7},
+  {taxa: 124, lt: 32.6},
+  {taxa: 127, lt: 32.5},
+  {taxa: 129, lt: 32.4},
+  {taxa: 132, lt: 32.3},
+  {taxa: 135, lt: 32.2},
+  {taxa: 137, lt: 32.1},
+  {taxa: 140, lt: 32.0},
+  {taxa: 143, lt: 31.9},
+  {taxa: 146, lt: 31.8},
+  {taxa: 149, lt: 31.7},
+  {taxa: 152, lt: 31.6},
+  {taxa: 155, lt: 31.5},
+  {taxa: 158, lt: 31.4},
+  {taxa: 161, lt: 31.3},
+  {taxa: 165, lt: 31.2},
+  {taxa: 168, lt: 31.1},
+  {taxa: 171, lt: 31.0},
+  {taxa: 175, lt: 30.9},
+  {taxa: 178, lt: 30.8},
+  {taxa: 182, lt: 30.7},
+  {taxa: 186, lt: 30.6},
+  {taxa: 189, lt: 30.5},
+  {taxa: 193, lt: 30.4},
+  {taxa: 197, lt: 30.3},
+  {taxa: 201, lt: 30.2},
+  {taxa: 205, lt: 30.1},
+  {taxa: 209, lt: 30.0},
+  {taxa: 214, lt: 29.9},
+  {taxa: 218, lt: 29.8},
+  {taxa: 222, lt: 29.7},
+  {taxa: 227, lt: 29.6},
+  {taxa: 231, lt: 29.5},
+  {taxa: 236, lt: 29.4},
+  {taxa: 241, lt: 29.3},
+  {taxa: 246, lt: 29.2},
+  {taxa: 251, lt: 29.1},
+  {taxa: 256, lt: 29.0},
+  {taxa: 261, lt: 28.9},
+  {taxa: 266, lt: 28.8},
+  {taxa: 272, lt: 28.7},
+  {taxa: 277, lt: 28.6},
+  {taxa: 283, lt: 28.5},
+  {taxa: 289, lt: 28.4},
+  {taxa: 294, lt: 28.3},
+  {taxa: 300, lt: 28.2},
+  {taxa: 306, lt: 28.1},
+  {taxa: 313, lt: 28.0},
+  {taxa: 319, lt: 27.9},
+  {taxa: 325, lt: 27.8},
+  {taxa: 332, lt: 27.7},
+  {taxa: 339, lt: 27.6},
+  {taxa: 346, lt: 27.7},
+  {taxa: 353, lt: 27.4},
+  {taxa: 360, lt: 27.3},
+  {taxa: 367, lt: 27.2},
+  {taxa: 374, lt: 27.1},
+  {taxa: 382, lt: 27.0},
+  {taxa: 390, lt: 26.9},
+  {taxa: 398, lt: 26.8},
+  {taxa: 406, lt: 26.7},
+  {taxa: 414, lt: 26.6},
+  {taxa: 422, lt: 26.5},
+  {taxa: 431, lt: 26.4},
+  {taxa: 440, lt: 26.3},
+  {taxa: 448, lt: 26.2},
+  {taxa: 458, lt: 26.1},
+  {taxa: 467, lt: 26.0},
+  {taxa: 476, lt: 25.9},
+  {taxa: 486, lt: 25.8},
+  {taxa: 496, lt: 25.7},
+  {taxa: 506, lt: 25.6},
+  {taxa: 516, lt: 25.5},
+  {taxa: 526, lt: 25.4},
+  {taxa: 537, lt: 25.3},
+  {taxa: 548, lt: 25.2},
+  {taxa: 559, lt: 25.1},
+  {taxa: 570, lt: 25.0},
+  {taxa: 582, lt: 24.9},
+  {taxa: 594, lt: 24.8},
+  {taxa: 606, lt: 24.7}
 ]
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,11 +114,15 @@ calcBtn.addEventListener("click", (e) => {
   e.preventDefault()
   let noExpositionSolar = document.getElementById("no-exposition").checked
   let exposition = noExpositionSolar ? false : true
-  calcIBUGMedium(exposition)
+  const [ibutgMedium, metabolismoMedium] = calcIBUGMedium(exposition)
+  const lt = resquestLimite(metabolismoMedium)
+  presetResult(ibutgMedium, metabolismoMedium, lt)
 })
 
 const createNewLine = () => {
   const novaLinha = corpoTabela.insertRow();
+  novaLinha.classList.add('tabela-linha');
+  novaLinha.dataset.rowIndex = Date.now();
   novaLinha.innerHTML = `
     <td><input type="text" step="0.01" value="" class="input-tempo" required></td>
     <td><input type="text" step="0.01" value="" class="input-tbs" required></td>
@@ -43,6 +131,14 @@ const createNewLine = () => {
     <td><input type="text" step="0.01" value="" class="input-metabolismo" required></td>
     <td><input type="text" value="" class="input-vestimenta" required></td>
   `;
+}
+
+const resquestLimite = (taxaMd) => {
+  const value = valuesMetabolismo.find(item => {
+    return item.taxa >= taxaMd
+  })
+
+  return value.lt
 }
 
 const calcIBUGMedium = (type) => {
@@ -68,9 +164,8 @@ const calcIBUGMedium = (type) => {
 
 
 
-  return 
+  return [ibutgMedium, metabolismoMedium]
 }
-
 
 const ibutgCalc = (tbn, tbs, tg, exposition) => {
   let ibutg = 0
@@ -100,3 +195,80 @@ closeSwitch.addEventListener("click", (e) => {
     viewResult.id = "hidden"
   }
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... suas variáveis (corpoTabela, adicionarLinhaBtn, etc.)
+    
+    
+    // Variável para armazenar a linha que foi clicada
+    let linhaAtualParaDeletar = null;
+
+    // =========================================================
+    // 1. ADICIONAR CLASSE NAS NOVAS LINHAS (IMPORTANTE!)
+    // =========================================================
+    const criarNovaLinha = () => {
+        const novaLinha = corpoTabela.insertRow();
+        // Adicionando a classe e um ID único para melhor controle
+        novaLinha.classList.add('tabela-linha');
+        novaLinha.dataset.rowIndex = Date.now(); // ID único simples baseado no tempo
+        // ... (o restante dos inputs)
+        novaLinha.innerHTML = `
+            <td><input type="number" step="0.01" value="" class="input-tempo" required></td>
+            <td><input type="text" value="" class="input-vestimenta" required></td>
+        `;
+    };
+    
+    // ... (chamada de criarNovaLinha() na inicialização)
+    
+    // =========================================================
+    // 2. DETECTAR CLIQUE DIREITO (contextmenu)
+    // =========================================================
+    document.getElementById('dadosTabela').addEventListener('contextmenu', function(e) {
+        // Encontra o TR mais próximo (a linha da tabela)
+        const linhaClicada = e.target.closest('.tabela-linha'); 
+
+        if (linhaClicada) {
+            e.preventDefault(); // Impede que o menu de contexto padrão do navegador apareça
+
+            linhaAtualParaDeletar = linhaClicada;
+
+            // Posiciona o menu de contexto onde o mouse foi clicado
+            contextMenu.style.left = e.pageX + 'px';
+            contextMenu.style.top = e.pageY + 'px';
+            contextMenu.style.display = 'block';
+        } else {
+            // Se clicou fora de uma linha, esconde o menu
+            contextMenu.style.display = 'none';
+        }
+    });
+
+    // =========================================================
+    // 3. EXECUTAR DELEÇÃO
+    // =========================================================
+    deletarLinhaBtn.addEventListener('click', () => {
+        if (linhaAtualParaDeletar) {
+            // Remove a linha do DOM
+            linhaAtualParaDeletar.remove(); 
+            
+            // Opcional: Reinicializa a variável de controle e esconde o menu
+            linhaAtualParaDeletar = null;
+            contextMenu.style.display = 'none';
+
+            // Opcional: Dispare o cálculo novamente ou notifique o usuário
+            console.log("Linha deletada com sucesso!");
+        }
+    });
+
+    // =========================================================
+    // 4. ESCONDER O MENU COM QUALQUER OUTRO CLIQUE
+    // =========================================================
+    // Quando o usuário clica em qualquer lugar (que não seja o botão de deleção), o menu some.
+    document.addEventListener('click', () => {
+        contextMenu.style.display = 'none';
+    });
+    
+    // NOTA: Para que o menu de contexto não suma imediatamente ao aparecer,
+    // você precisará fazer o e.stopPropagation() no listener do contextMenu se ele for complexo.
+    // Para este caso simples, a estrutura acima deve funcionar bem.
+
+});
