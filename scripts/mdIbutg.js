@@ -10,6 +10,9 @@ const resultMediumMetabolismo = document.getElementById("resultMediumMetabolismo
 const resultLimite = document.getElementById("resultLimite")
 const contextMenu = document.getElementById('contextMenu');
 const deletarLinhaBtn = document.getElementById('deletarLinhaBtn');
+let linhaAtualParaDeletar = null;
+
+const maxLines = 12
 
 const valuesMetabolismo = [
   {taxa: 100, lt: 30.2},
@@ -120,6 +123,10 @@ calcBtn.addEventListener("click", (e) => {
 })
 
 const createNewLine = () => {
+  const numeroLinhasAtual = corpoTabela.querySelectorAll('tr').length
+  if (numeroLinhasAtual >= maxLines) {
+    return
+  }
   const novaLinha = corpoTabela.insertRow();
   novaLinha.classList.add('tabela-linha');
   novaLinha.dataset.rowIndex = Date.now();
@@ -131,6 +138,10 @@ const createNewLine = () => {
     <td><input type="text" step="0.01" value="" class="input-metabolismo" required></td>
     <td><input type="text" value="" class="input-vestimenta" required></td>
   `;
+
+  if (numeroLinhasAtual + 1 >= maxLines) {
+    addLineBtn.disabled = true;
+  }
 }
 
 const resquestLimite = (taxaMd) => {
@@ -196,79 +207,35 @@ closeSwitch.addEventListener("click", (e) => {
   }
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-    // ... suas variáveis (corpoTabela, adicionarLinhaBtn, etc.)
-    
-    
-    // Variável para armazenar a linha que foi clicada
-    let linhaAtualParaDeletar = null;
+document.getElementById('dadosTabela').addEventListener('contextmenu', function(e) {
+  const linhaClicada = e.target.closest('.tabela-linha'); 
 
-    // =========================================================
-    // 1. ADICIONAR CLASSE NAS NOVAS LINHAS (IMPORTANTE!)
-    // =========================================================
-    const criarNovaLinha = () => {
-        const novaLinha = corpoTabela.insertRow();
-        // Adicionando a classe e um ID único para melhor controle
-        novaLinha.classList.add('tabela-linha');
-        novaLinha.dataset.rowIndex = Date.now(); // ID único simples baseado no tempo
-        // ... (o restante dos inputs)
-        novaLinha.innerHTML = `
-            <td><input type="number" step="0.01" value="" class="input-tempo" required></td>
-            <td><input type="text" value="" class="input-vestimenta" required></td>
-        `;
-    };
-    
-    // ... (chamada de criarNovaLinha() na inicialização)
-    
-    // =========================================================
-    // 2. DETECTAR CLIQUE DIREITO (contextmenu)
-    // =========================================================
-    document.getElementById('dadosTabela').addEventListener('contextmenu', function(e) {
-        // Encontra o TR mais próximo (a linha da tabela)
-        const linhaClicada = e.target.closest('.tabela-linha'); 
+  if (linhaClicada) {
+    e.preventDefault(); 
 
-        if (linhaClicada) {
-            e.preventDefault(); // Impede que o menu de contexto padrão do navegador apareça
-
-            linhaAtualParaDeletar = linhaClicada;
-
-            // Posiciona o menu de contexto onde o mouse foi clicado
-            contextMenu.style.left = e.pageX + 'px';
-            contextMenu.style.top = e.pageY + 'px';
-            contextMenu.style.display = 'block';
-        } else {
-            // Se clicou fora de uma linha, esconde o menu
-            contextMenu.style.display = 'none';
-        }
-    });
-
-    // =========================================================
-    // 3. EXECUTAR DELEÇÃO
-    // =========================================================
-    deletarLinhaBtn.addEventListener('click', () => {
-        if (linhaAtualParaDeletar) {
-            // Remove a linha do DOM
-            linhaAtualParaDeletar.remove(); 
-            
-            // Opcional: Reinicializa a variável de controle e esconde o menu
-            linhaAtualParaDeletar = null;
-            contextMenu.style.display = 'none';
-
-            // Opcional: Dispare o cálculo novamente ou notifique o usuário
-            console.log("Linha deletada com sucesso!");
-        }
-    });
-
-    // =========================================================
-    // 4. ESCONDER O MENU COM QUALQUER OUTRO CLIQUE
-    // =========================================================
-    // Quando o usuário clica em qualquer lugar (que não seja o botão de deleção), o menu some.
-    document.addEventListener('click', () => {
-        contextMenu.style.display = 'none';
-    });
-    
-    // NOTA: Para que o menu de contexto não suma imediatamente ao aparecer,
-    // você precisará fazer o e.stopPropagation() no listener do contextMenu se ele for complexo.
-    // Para este caso simples, a estrutura acima deve funcionar bem.
-
+    linhaAtualParaDeletar = linhaClicada;
+    contextMenu.style.left = e.pageX + 'px';
+    contextMenu.style.top = e.pageY + 'px';
+    contextMenu.style.display = 'block';
+  } else {
+    contextMenu.style.display = 'none';
+  }
 });
+
+deletarLinhaBtn.addEventListener('click', () => {
+  if (linhaAtualParaDeletar) {
+    linhaAtualParaDeletar.remove(); 
+    linhaAtualParaDeletar = null;
+    contextMenu.style.display = 'none';
+    const numeroLinhasAtual = corpoTabela.querySelectorAll('tr').length;
+    if (numeroLinhasAtual < maxLines) {
+      addLineBtn.disabled = false;
+    }
+  }
+});
+
+
+document.addEventListener('click', () => {
+  contextMenu.style.display = 'none';
+});
+    
