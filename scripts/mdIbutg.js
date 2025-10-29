@@ -165,7 +165,7 @@ const calcIBUGMedium = (type) => {
     const metabolismo = parseFloat(inputs[4].value)
     const vestimenta = parseFloat(inputs[5].value)
     const ibutg = ibutgCalc(tbn, tbs, tg, type)
-    const productLineIbutg = ibutg * time
+    const productLineIbutg = (ibutg + vestimenta) * time
     const productLineMetabolismo = metabolismo * time
     ibutgMedium += productLineIbutg
     metabolismoMedium +=productLineMetabolismo
